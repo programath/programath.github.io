@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -61,10 +61,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Network-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Network" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/08/25/Network-1/" class="article-date">
-  <time datetime="2017-08-25T10:47:47.000Z" itemprop="datePublished">2017-08-25</time>
+    <a href="/2017/08/25/Network/" class="article-date">
+  <time datetime="2017-08-25T10:56:04.000Z" itemprop="datePublished">2017-08-25</time>
 </a>
     
   </div>
@@ -75,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/25/Network-1/">Network</a>
+      <a class="article-title" href="/2017/08/25/Network/">Network</a>
     </h1>
   
 
@@ -83,11 +83,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Low-Bit-Quantization-Strategy-of-Convolution-Neural-Network"><a href="#Low-Bit-Quantization-Strategy-of-Convolution-Neural-Network" class="headerlink" title="Low-Bit Quantization Strategy of Convolution Neural Network"></a>Low-Bit Quantization Strategy of Convolution Neural Network</h1><p><strong>Motivation</strong></p>
+<p>It has been well shown that quantizing a convolution neural network can significant reduce the overhead of computation on hardware. A hardware friendly quantization strategy involves fixed-point, few multiplication and low bitwise. Many researches have shown that quantizing a full precision CNN into 8bit can achieve little degradtion in accuracy. And another extreme low bit scheme like Binary-Wise Network, Binary Neural Network, XNOR Network also shows that low-bit quantization preform well in some extent. </p>
+<p>Since fixed-point quantization and bitwise operation give a opportunity to break the limitation of computation resources such as dsp on FPGA,  the bandwidth becomes the deterministic factor of the computation efficiency. Low bit wise quantization apparently can mitigate the load of bandwidth</p>
+<p>Efficient bit wise is usuaslly integer power of 2, in order to take up the total bit width of the bus. We consider a 4bit quantization scheme to transfer feature map into computation core. Usual quantization of 4bit is dynamic fixed point quantization. And in tensorflow, they quantize numbers into a linear distribution among the range of activations. In our implement, we try to use the code book and loop-up table on FPGA to quickly quantize activations.</p>
+<p>The code book contains 16 numbers when 4bit quantization scheme is utilized. The way to find code book is simply use K-Means to optimize the F-norm function:<br>$$<br>\min||\mathbf{a}-q\mathbf{(a)}||_{F}<br>$$</p>
+<p>The result</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/Network-1/" data-id="cj6rra8gf0000624ip0768oo7" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/08/25/Network/" data-id="cj6rrjava0000ep4icjcd3wkg" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -119,11 +125,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="This-a-test-post-of-hexo-blog"><a href="#This-a-test-post-of-hexo-blog" class="headerlink" title="This a test post of hexo blog"></a>This a test post of hexo blog</h1>
+        <h1 id="This-a-test-post-of-hexo-blog"><a href="#This-a-test-post-of-hexo-blog" class="headerlink" title="This a test post of hexo blog"></a>This a test post of hexo blog</h1><p>#</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/test/" data-id="cj6rra8gr0002624i07kop909" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/08/25/test/" data-id="cj6rrjavi0001ep4i2l21cz3q" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -168,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/hello-world/" data-id="cj6rra8gm0001624icfu6nzei" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/08/25/hello-world/" data-id="cj6rrjavk0002ep4ildqzftu1" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -193,7 +200,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
     </div>
@@ -203,12 +210,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/08/25/Network-1/">Network</a>
+            <a href="/2017/08/25/Network/">Network</a>
           </li>
         
           <li>
@@ -232,7 +239,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
