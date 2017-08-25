@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>Network | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Low-Bit Quantization Strategy of Convolution Neural NetworkMotivation It has been well shown that quantizing a convolution neural network can significant reduce the overhead of computation on hardware">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Network">
+<meta property="og:url" content="http://yoursite.com/2017/08/25/Network/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Low-Bit Quantization Strategy of Convolution Neural NetworkMotivation It has been well shown that quantizing a convolution neural network can significant reduce the overhead of computation on hardware">
+<meta property="og:updated_time" content="2017-08-25T11:17:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Network">
+<meta name="twitter:description" content="Low-Bit Quantization Strategy of Convolution Neural NetworkMotivation It has been well shown that quantizing a convolution neural network can significant reduce the overhead of computation on hardware">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Network" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/25/Network/" class="article-date">
+  <time datetime="2017-08-25T10:56:04.000Z" itemprop="datePublished">2017-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Network
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Low-Bit-Quantization-Strategy-of-Convolution-Neural-Network"><a href="#Low-Bit-Quantization-Strategy-of-Convolution-Neural-Network" class="headerlink" title="Low-Bit Quantization Strategy of Convolution Neural Network"></a>Low-Bit Quantization Strategy of Convolution Neural Network</h1><p><strong>Motivation</strong></p>
+<p>It has been well shown that quantizing a convolution neural network can significant reduce the overhead of computation on hardware. A hardware friendly quantization strategy involves fixed-point, few multiplication and low bitwise. Many researches have shown that quantizing a full precision CNN into 8bit can achieve little degradtion in accuracy. And another extreme low bit scheme like Binary-Wise Network, Binary Neural Network, XNOR Network also shows that low-bit quantization preform well in some extent. </p>
+<p>Since fixed-point quantization and bitwise operation give a opportunity to break the limitation of computation resources such as dsp on FPGA,  the bandwidth becomes the deterministic factor of the computation efficiency. Low bit wise quantization apparently can mitigate the load of bandwidth</p>
+<p>Efficient bit wise is usuaslly integer power of 2, in order to take up the total bit width of the bus. We consider a 4bit quantization scheme to transfer feature map into computation core. Usual quantization of 4bit is dynamic fixed point quantization. And in tensorflow, they quantize numbers into a linear distribution among the range of activations. In our implement, we try to use the code book and loop-up table on FPGA to quickly quantize activations.</p>
+<p>The code book contains 16 numbers when 4bit quantization scheme is utilized. The way to find code book is simply use K-Means to optimize the F-norm function:<br>$$<br>\min||\mathbf{a}-q\mathbf{(a)}||_{F}<br>$$</p>
+<p>The result show</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/25/Network/" data-id="cj6rsodqz0001ws4iepezmlpg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/25/test/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">test</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/25/Network/">Network</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/25/test/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/25/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
