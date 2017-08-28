@@ -50,9 +50,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -62,6 +62,52 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-Structure" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/28/Structure/" class="article-date">
+  <time datetime="2017-08-28T05:58:41.000Z" itemprop="datePublished">2017-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/Structure/">Is Relu Useful in Network Quantization?</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Relu is a widely used non-linear activation function in Recently Neural Network. Relu is not a neccesary layer after doing convolution operation, but it forces those negetive values of feature map to be zero, results in the sparity of feature map<br>and keeps all activation to become non-negative.<br>Intuitively, in quantization task, relu reduces the quantization range, which allows low bit to express numbers more accurately. But can relu always benifit the quantization of CNN?</p>
+<p>Maybe it is useful in many network structures, and in fact I have benefitted from it in quantizing vgg-like Network. But is not for some special cases. Let’s assume a structure, a 3x3 convolution followed by a 1x1 convolution, which<br>is commonly used in ResNet and so on. There is a special property of 1x1 convolution that it doesn’t expand the receptive field of feature map, which we can easily merge the 1x1 convolution into 3x3 convolution, if there is no relu layer inserted between them.</p>
+<p>Compare this two kind of structure, one is 3x3, $$i$$ input channels and $$t$$ output channels, followed by 1x1, $$t$$ input channels and $$o$$ output channels. Another is a merged version of convolution, with 3x3 kernel size, $$i$$ input channels and $$o$$ output channels. We compare this two kinds of structure by estimating their computation amount, parameter amout.</p>
+<ul>
+<li>computation amount: 3x3xtxi+1x1xtxo vs. 3x3xixo</li>
+<li>parameter amount: 3x3xtxi+1x1xtxo vs. 3x3xixo</li>
+</ul>
+<p>As we can see, if $$t$$ is larger than $$o$$, there is no doubt that merged version can save computation resources. </p>
+<p><strong>GPU Performance</strong><br>We implement the convolution using caffe framework. In caffe, convolution is transformed into a matrix multiplication. It computes the result parallelly on output channel dim.<br>Experiment results show that reducing output channel cannot significantly lower the running time. All we can benefit from the merged version is the removal of 1x1 convolution and time can be saved.</p>
+<p><strong>FPGA Performance</strong><br>FPGA cannot completely compute parallelly on out channel dimension. It’s obiviously that reducing the output channel can reduce loop trip count, and it can also reduce cost of data load and save, which is often the bottleneck of FPGA design. But if $$t &lt; o$$, there will be an increase in computation amount, which may unfortunately cost more time.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/08/28/Structure/" data-id="cj6vu2smn0002lf4ig4dnlcid" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Network" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -95,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/Network/" data-id="cj6vr534200000p4i6wfhcfcl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/25/Network/" data-id="cj6vu2sme0000lf4ie4sqhc7w" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -132,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/test/" data-id="cj6vr534g00030p4i7a1b3599" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/25/test/" data-id="cj6vu2sms0004lf4iygaxaanb" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -177,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/hello-world/" data-id="cj6vr534c00020p4i26i4zzzj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/25/hello-world/" data-id="cj6vu2smq0003lf4ilye9siu7" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -212,9 +258,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/28/Structure/">Is Relu Useful in Network Quantization?</a>
+          </li>
         
           <li>
             <a href="/2017/08/25/Network/">Low-Bit Quantization Strategy of Convolution Neural Network</a>
@@ -241,7 +291,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
