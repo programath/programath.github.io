@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/about/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="I am interested in Hardware Design, Deep Learning. Use some mathematic tricks to help solving my problems.  Experience Tsinghua University, 2014~Project   FPGA-Oriented Low-Bit Quantization for Convol">
-<meta property="og:updated_time" content="2017-08-28T03:17:41.000Z">
+<meta property="og:updated_time" content="2017-08-28T03:55:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tuopu Wen">
 <meta name="twitter:description" content="I am interested in Hardware Design, Deep Learning. Use some mathematic tricks to help solving my problems.  Experience Tsinghua University, 2014~Project   FPGA-Oriented Low-Bit Quantization for Convol">
@@ -54,9 +54,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -92,26 +92,26 @@
 <li>Tsinghua University, 2014~<h1 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h1></li>
 </ul>
 <hr>
-<p><strong>FPGA-Oriented Low-Bit Quantization for Convolution Neural Network</strong></p>
+<p><strong>FPGA-Oriented Low-Bit Quantization for Convolution Neural Network</strong><br>A hardware-friendly quantization strategy. It is based on the caffe Ristretto framework. In Ristretto, many tasks can be quantized into 8bit without much degradtion by finetuning trick.<br>My strategy is to quantize the full precision network into 4bit codebook and replace multiplication by bit shift operation.   </p>
 <hr>
-<p><strong>Architecture Design of Winograd Convolution Accelerator based on FPGA</strong></p>
+<p><strong>Architecture Design of Winograd Convolution Accelerator based on FPGA</strong><br>It has been known that winograd algorithm can significantly reduce the number of multiplication compared to naive convolution implementation. We designed a winograd convolution framework<br>on zc706 by Vivado HLS tool chain, to run an online road lane detection task.(20fps).</p>
 <hr>
-<p><strong>Stock Trends Prediction Using Gaussian Process Regression</strong></p>
+<p><strong>Stock Trends Prediction Using Gaussian Process Regression</strong><br>Course project of Probabilities and Stochastic Process about predicting stocks’ prices.Proposed a method called piece-wise GPR to perform long-term prediction of stocks’ prices. The project finally got 37 pts with 40 pts in total.</p>
 <hr>
-<p><strong>The CNN Accelerator Design Based on FPGA</strong></p>
+<p><strong>The CNN Accelerator Design Based on FPGA</strong><br>Compeleted a CNN accelerator running on FPGA;Designed the convolution layers based on FPGA and controlled the communication between CPU and FPGA. The accelerator finally got a 10x acceleration on computing performance.</p>
 <hr>
-<p><strong>Indoor Localization of Wheeled Robots and Drones</strong></p>
+<p><strong>Indoor Localization of Wheeled Robots and Drones</strong><br>Localized wheeled cars using computer vision while UAVs using UWB technology with four anchors fixed.Processed data from UWB, coded flight control and built the communication between the UAV and the server.<br>The accuracy of positioning reached at about $\pm$ 5cm; Be used in Tsinghua Electronic Design Competition. </p>
 <hr>
-<p><strong>Modeling, Assessment and Prediction of Risks of Metabolic Syndrome</strong></p>
+<p><strong>Modeling, Assessment and Prediction of Risks of Metabolic Syndrome</strong><br>We modeled the metabolic reactions in human body. PDE, Matrix Completion, and SVM are used in modeling the reaction network. PDE was used to describe the behavior of reactions with the influence of catalyzer.<br>We also used Matrix completion to predict the missing information of samples. During the information prediction, L1 norm was added into the constrains to obtain the sparse result.</p>
 <hr>
-<p><strong>Disorganized Video Frames Rearrangement</strong></p>
+<p><strong>Disorganized Video Frames Rearrangement</strong><br>The task is to resort the disorganized video frames. In this project, techniques like K-means and PCA were used to cluster different scenes, and optical flow trick was used to<br>determine the order of frames.</p>
 <hr>
-<p><strong>Air Hockey Robot Design of  based on OpenCV</strong></p>
+<p><strong>Air Hockey Robot Design of based on OpenCV</strong><br>Designed a robot which could hit the fast moving ball(Air Hockey game). We controlled the robot arm to hit the ball. To find where the ball is, we fused the color and optical flow information.<br>The project finally won the second prize of Challenge Cup held in Tsinghua.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/about/index.html" data-id="cj6vlfuaw0001bl4i7oacd4sz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/about/index.html" data-id="cj6vmsof30000fr4ialyhvvz2" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -145,7 +145,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -174,7 +174,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
@@ -199,6 +199,23 @@
 
 <script src="/js/script.js"></script>
 
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
