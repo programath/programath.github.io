@@ -90,12 +90,13 @@
 <p>Since fixed-point quantization and bitwise operation give a opportunity to break the limitation of computation resources such as dsp on FPGA,  the bandwidth becomes the deterministic factor of the computation efficiency. Low bit wise quantization apparently can mitigate the load of bandwidth</p>
 <p>Efficient bit wise is usuaslly integer power of 2, in order to take up the total bit width of the bus. We consider a 4bit quantization scheme to transfer feature map into computation core. Usual quantization of 4bit is dynamic fixed point quantization. And in tensorflow, they quantize numbers into a linear distribution among the range of activations. In our implement, we try to use the code book and loop-up table on FPGA to quickly quantize activations.</p>
 <p>The code book contains 16 numbers when 4bit quantization scheme is utilized. The way to find code book is simply use K-Means to optimize the F-norm function:<br>$$<br>\min||\mathbf{a}-q\mathbf{(a)}||_{F}<br>$$</p>
-<p>The result show</p>
+<p>Although there is a limitation of the range which 4bit codebook can depict, the result shows that the outlier of feature map won’t significantly impact the computation output,<br>except the top fc-layer. Some reseach have shown that in classification task, low bit can still work well. But on segmentation task, each pixel will be taken into consideration<br>independly, unlike classification task, which only needs a single output.  In our experiment, we show that quantizing the fc layer into 4bit codebook before it is fed into softmax layer will cause a 3% reduction on the accuracy.<br>compare to 6bit dynamic fixed-point quantization. So it’s merging softmax layer into fc layer on FPGA that be a more better way to quantize the network into 4bit</p>
+<p>Quantizing weight into low bit is not difficult. Many related work like Binary Neural Network, Tenary Neural Network have show impressive performances even when weights are quantized into extreme low bit, and some work show quantize weight into 2-power can also work well, while in my project I cannot reproduce its performance by finefuning the full precision network.<br>To obtain the benefits of 2-power weight, I quantize the weight into the sum of two 2-power number. This strategy will cost 8 bits in my design, but there is no gap to finetune it from a full precision network. The burden of 8 bit weight seems not to do harm to the transfer efficiency because the amount of weight is relatively small.<br>In my experiment, this kind of quantize strategy is nearly lossless in mIOU measurement of segementation task.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/Network/" data-id="cj6vnq8l60000m04i0km9nyg0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/25/Network/" data-id="cj6vquh170001w54i93dk7lzq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +133,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/test/" data-id="cj6vnq8lk0003m04ie1vqcvt1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/25/test/" data-id="cj6vquh1h0003w54isxps147w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/25/hello-world/" data-id="cj6vnq8lf0002m04i8s5vuxhb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/08/25/hello-world/" data-id="cj6vquh1d0002w54i9tlqqq46" class="article-share-link">Share</a>
       
       
     </footer>
